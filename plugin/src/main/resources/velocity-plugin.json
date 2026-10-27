@@ -1,0 +1,17 @@
+{
+  "id": "imagemotd-velocity",
+  "name": "ImageMOTD Velocity",
+  "version": "1.0.0",
+  "description": "Use PNG images as your server MOTD on Velocity",
+  "authors": ["tgb20", "ported"],
+  "main": "gg.tgb.imagemotd.velocity.ImageMOTDVelocity",
+  "dependencies": [
+    {
+      "id": "velocity",
+      "version": "3.3.0",
+      "required": true
+    }
+  ],
+  "incompatible": [],
+  "load": "DEFAULT"
+}

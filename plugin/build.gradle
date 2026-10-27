@@ -1,0 +1,45 @@
+plugins {
+    id 'java'
+}
+
+group = 'gg.tgb'
+version = '1.0.0'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'velocity'
+        url = 'https://repo.velocitypowered.com/repository/maven-public/'
+    }
+}
+
+dependencies {
+    compileOnly 'com.velocitypowered:velocity-api:3.3.0'
+    compileOnly 'com.google.code.gson:gson:2.13.1'
+    compileOnly 'net.kyori:adventure-api:4.18.0'
+    compileOnly 'net.kyori:adventure-text-serializer-gson:4.18.0'
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release = 21
+}
+
+jar {
+    manifest {
+        attributes(
+            'Main-Class': 'gg.tgb.imagemotd.velocity.ImageMOTDVelocity',
+            'Plugin-Main': 'gg.tgb.imagemotd.velocity.ImageMOTDVelocity',
+            'Plugin-Version': project.version,
+            'Plugin-Dependencies': 'velocity:3.3.0'
+        )
+    }
+    // No fat jar - just the plugin classes
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
