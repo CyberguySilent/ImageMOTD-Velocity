@@ -1,0 +1,15 @@
+name: ImageMOTD
+version: 1.1.0
+main: me.nos1qnal.imagemotd.q
+author: NoS1qnal_
+description: Use images as motd
+api-version: '1.21'
+commands:
+  imagemotd:
+    description: Manage ImageMOTD.
+    usage: /imagemotd <generate|status|reload>
+    aliases: [imgmotd, pngmotd]
+permissions:
+  imagemotd.admin:
+    description: Allows ImageMOTD administration.
+    default: op
