@@ -1,0 +1,25 @@
+# Build outputs
+build/
+.gradle/
+
+# IDE
+.idea/
+*.iml
+out/
+run/
+
+# Backup files
+*.bak
+*.bak*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+
+# Local config
+local.properties
