@@ -49,4 +49,5 @@ This build is a functional skeleton: the `/imagemotd` command is registered and 
 ## License
 
 GPL-3.0 (see LICENSE)
+
 # ImageMOTD v5 Test
