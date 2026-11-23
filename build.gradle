@@ -7,13 +7,24 @@ version = '1.1.0'
 
 repositories {
     mavenCentral()
+    maven {
+        name = "papermc-repo"
+        url = "https://repo.papermc.io/repository/maven-public/"
+    }
 }
 
 dependencies {
-    implementation 'com.velocitypowered:velocity-api:4.4.0'
+    compileOnly 'com.velocitypowered:velocity-api:3.5.1'
+    annotationProcessor 'com.velocitypowered:velocity-api:3.5.1'
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    // Velocity 3.5.1 est compile pour Java 17/21 (class-file 65).
+    // Minestrator est limite a Java 21 : on cible Java 21.
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.release.set(21)
 }

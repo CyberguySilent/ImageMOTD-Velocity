@@ -42,6 +42,10 @@ the `me.nos1qnal.imagemotd.q` main class.
 
 This repository is mirrored at: https://github.com/CyberguySilent/ImageMOTD-Velocity
 
+## Status (v1.1.0)
+
+This build is a functional skeleton: the `/imagemotd` command is registered and wired to the Velocity lifecycle (`ProxyInitializeEvent` / `ProxyShutdownEvent`), but `generate` and `status` are placeholders — the actual image-to-MOTD rendering is not implemented in this repository's source.
+
 ## License
 
 GPL-3.0 (see LICENSE)
