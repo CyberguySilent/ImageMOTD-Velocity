@@ -19,8 +19,8 @@ dependencies {
 }
 
 java {
-    // Velocity 3.5.1 est compile pour Java 17/21 (class-file 65).
-    // Minestrator est limite a Java 21 : on cible Java 21.
+    // Velocity 3.5.1 is compiled for Java 17/21 (class-file 65).
+    // Minestrator is limited to Java 21: we target Java 21.
     toolchain.languageVersion = JavaLanguageVersion.of(21)
 }
 
