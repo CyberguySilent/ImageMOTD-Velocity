@@ -1,0 +1,60 @@
+name: Build and Release
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+      
+      - name: Cache Gradle
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-
+      
+      - name: Build with Gradle
+        run: ./gradlew build --no-daemon
+      
+      - name: Upload JAR artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ImageMOTD-Velocity-jar
+          path: build/libs/ImageMOTD-Velocity-1.1.0.jar
+      
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ github.run_number }}
+          name: "Version v${{ github.run_number }}"
+          body: |
+            ## 📦 ImageMOTD-Velocity v${{ github.run_number }}
+            
+            Automatically built and released.
+            
+            ## 📥 Téléchargement
+            
+            Le artefact `ImageMOTD-Velocity-1.1.0.jar` est disponible ci-dessous.
+            
+            ## 📋 Note
+            
+            *Ce projet compile en Java 21 (bytecode `--release 17`) et est compatible Minestrator/Velocity 3.5.1+.*
+          draft: false
+          prerelease: false
