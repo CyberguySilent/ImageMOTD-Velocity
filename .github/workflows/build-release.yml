@@ -35,12 +35,6 @@ jobs:
       - name: Build with Gradle
         run: ./gradlew build --no-daemon
       
-      - name: Upload JAR artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: ImageMOTD-Velocity-jar
-          path: build/libs/ImageMOTD-Velocity-1.1.0.jar
-      
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -51,12 +45,14 @@ jobs:
             
             Automatically built and released.
             
-            ## 📥 Téléchargement
+            ## 📥 Download
             
-            Le artefact `ImageMOTD-Velocity-1.1.0.jar` est disponible ci-dessous.
+            The `ImageMOTD-Velocity-1.1.0.jar` artifact is available below.
             
             ## 📋 Note
             
-            *Ce projet compile en Java 21 (bytecode `--release 17`) et est compatible Minestrator/Velocity 3.5.1+.*
+            *This project compiles with Java 21 (bytecode --release 17) and is compatible with Minestrator/Velocity 3.5.1+.*
           draft: false
           prerelease: false
+          files:
+            - build/libs/ImageMOTD-Velocity-1.1.0.jar
